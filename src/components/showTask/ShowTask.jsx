@@ -26,7 +26,7 @@ const ShowTask = ({
   }, [filterText, task]);
 
   return (
-    <div className="w-[80%] bg-[#a1b2b2] h-[400px] mx-auto rounded-[20px] overflow-y-scroll">
+    <div className="lg:w-[80%] md:w-[90%] w-[92%] bg-[#a1b2b2] lg:h-[400px] md:h-[350px] h-[300px] mx-auto rounded-[20px] overflow-y-scroll">
       <div className="flex justify-between">
         <div>
           <p className="text-[#134e4a] py-3 px-7">

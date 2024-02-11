@@ -4,7 +4,7 @@ import { BiEdit } from "react-icons/bi";
 
 const Task = ({ todo, hanndleDelete, handleUpdate, TodoComplate }) => {
   return (
-    <div className="flex p-4 justify-between px-10" id={styles.todo}>
+    <div className="flex p-4 justify-between md:px-10" id={styles.todo}>
       <div>
         <div className="flex gap-3">
           <input
@@ -16,6 +16,21 @@ const Task = ({ todo, hanndleDelete, handleUpdate, TodoComplate }) => {
           <p>{todo.value}</p>
         </div>
       </div>
+      <div className="md:flex hidden  gap-6">
+        <p>Status: {todo?.isComplete ? "completed" : "incomplete"}</p>
+        <p>|</p>
+        <p
+          className={`${
+            todo?.priority === "low" && "text-[#3498db] bg-[#ecf0f1]"
+          } ${todo?.priority === "medium" && "text-[#f39c12] bg-[#fdebd0]"}
+          ${todo?.priority === "high" && "text-[#e74c3c] bg-[#f9ebec]"}
+          px-2 rounded-md
+          `}
+        >
+          priority: Low
+        </p>
+      </div>
+
       <div className="flex gap-2">
         <AiFillDelete
           onClick={() => hanndleDelete(todo.id)}

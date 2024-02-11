@@ -11,11 +11,13 @@ const App = () => {
   const [count, setCount] = useState(1);
   const [filterText, setFilterText] = useState("all");
   const [value, setValue] = useState("");
+  const [priority, setPriority] = useState("");
 
   const TodoComplate = (id) => {
     const updatedTodo = task.find((item) => item.id === id);
     updatedTodo.isComplete = true;
   };
+
 
   const getTask = (todo) => {
     if (!todo) {
@@ -26,6 +28,7 @@ const App = () => {
       value: todo,
       isComplete: false,
       count: count,
+      priority: priority,
     };
     setTask([...task, newTask]);
     toast.success("added new task");
@@ -66,6 +69,7 @@ const App = () => {
             setCount={setCount}
             count={count}
             getTask={getTask}
+            setPriority={setPriority}
           />
         </div>
 

@@ -1,4 +1,13 @@
-const CreateTask = ({ getTask, value, setValue, setCount, count }) => {
+import { useState } from "react";
+
+const CreateTask = ({
+  getTask,
+  value,
+  setValue,
+  setCount,
+  count,
+  setPriority,
+}) => {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
@@ -10,8 +19,8 @@ const CreateTask = ({ getTask, value, setValue, setCount, count }) => {
   };
 
   return (
-    <div className="bg-[#a1b2b2] mb-4 p-5 gap-2 flex justify-center w-[80%] mx-auto rounded-xl">
-      <div className="w-[80%] gap-2 flex items-center ">
+    <div className="bg-[#a1b2b2] lg:h-20 md:h-20 h-auto overflow-hidden mb-4 p-5 gap-2 md:flex justify-center lg:w-[80%] md:w-[90%] w-[92%] mx-auto rounded-xl">
+      <div className="gap-2 w-full flex items-center ">
         <input
           value={value}
           placeholder="Add Your Task"
@@ -20,9 +29,12 @@ const CreateTask = ({ getTask, value, setValue, setCount, count }) => {
           type="text"
         />
         <div>
-          <select className="bg-[#14b8a6] text-white outline-none font-semibold  px-5 py-2">
+          <select
+            onChange={(e) => setPriority(e.target.value)}
+            className="bg-[#14b8a6] text-white outline-none font-semibold px-2 py-2"
+          >
             <option selected disabled>
-              Selrct riority
+              Selrct priority
             </option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -31,7 +43,7 @@ const CreateTask = ({ getTask, value, setValue, setCount, count }) => {
         </div>
       </div>
       <button
-        className="px-[20px] text-white font-medium cursor-pointer outline-none py-[10px] bg-[#14b8a6] rounded-[10px]"
+        className="w-[120px] md:h-full h-10 md:mt-0 mt-2 text-white font-medium cursor-pointer outline-none bg-[#14b8a6] rounded-[10px]"
         onClick={handleClick}
       >
         Add Task
