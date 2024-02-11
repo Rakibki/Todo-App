@@ -27,7 +27,7 @@ const Task = ({ todo, hanndleDelete, handleUpdate, TodoComplate }) => {
           px-2 rounded-md
           `}
         >
-          priority: Low
+          priority: {todo?.priority}
         </p>
       </div>
 

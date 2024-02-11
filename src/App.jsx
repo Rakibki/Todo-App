@@ -5,19 +5,22 @@ import "react-toastify/dist/ReactToastify.css";
 import coverImage from "./assets/images/cover.jpg";
 import CreateTask from "./components/createTask/CreateTask";
 import ShowTask from "./components/showTask/ShowTask";
+import { getLocalStor } from "./utils/localStoreg";
 
 const App = () => {
-  const [task, setTask] = useState([]);
+  // all task
+  const [allLsTasks, setAllLsTaks] = useState(getLocalStor("tasks"));
   const [count, setCount] = useState(1);
   const [filterText, setFilterText] = useState("all");
   const [value, setValue] = useState("");
-  const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState('low');
 
   const TodoComplate = (id) => {
-    const updatedTodo = task.find((item) => item.id === id);
+    const updatedTodo = allLsTasks.find((item) => item.id === id);
     updatedTodo.isComplete = true;
+    const alltaskStr = JSON.stringify(allLsTasks);
+    localStorage.setItem("tasks", alltaskStr);
   };
-
 
   const getTask = (todo) => {
     if (!todo) {
@@ -30,13 +33,18 @@ const App = () => {
       count: count,
       priority: priority,
     };
-    setTask([...task, newTask]);
-    toast.success("added new task");
+    allLsTasks.push(newTask);
+    const alltaskStr = JSON.stringify(allLsTasks);
+    localStorage.setItem("tasks", alltaskStr);
   };
 
   const hanndleDelete = (id) => {
-    const filtertask = () => task.filter((item) => item.id !== id);
-    setTask(filtertask);
+    const deletedTask = allLsTasks.findIndex((item) => item?.id == id);
+    allLsTasks.splice(deletedTask, 1);
+    const alltaskStr = JSON.stringify(allLsTasks);
+    localStorage.setItem("tasks", alltaskStr);
+    const finterTasks = allLsTasks?.filter((item) => item?.id !== id);
+    setAllLsTaks(finterTasks);
     toast.warn("Your Todo has been deleted!");
   };
 
@@ -46,8 +54,10 @@ const App = () => {
 
   const handleUpdate = (todo) => {
     setValue(todo.value);
-    const newtask = task.filter((item) => item.id !== todo.id);
-    setTask(newtask);
+    const newtask = allLsTasks.filter((item) => item.id !== todo.id);
+    setAllLsTaks(newtask);
+    const alltaskStr = JSON.stringify(allLsTasks);
+    localStorage.setItem("tasks", alltaskStr);
   };
 
   return (
@@ -79,7 +89,7 @@ const App = () => {
           TodoComplate={TodoComplate}
           hanndleDelete={hanndleDelete}
           handleChnage={handleChnage}
-          task={task}
+          task={allLsTasks}
         />
         <ToastContainer
           position="top-center"
