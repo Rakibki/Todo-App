@@ -1,8 +1,8 @@
-import styles from "./Todo.module.css";
+import styles from "./task.module.css";
 import { AiFillDelete } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 
-const Todo = ({ todo, hanndleDelete, handleUpdate, TodoComplate }) => {
+const Task = ({ todo, hanndleDelete, handleUpdate, TodoComplate }) => {
   return (
     <div className="flex p-4 justify-between px-10" id={styles.todo}>
       <div>
@@ -30,4 +30,4 @@ const Todo = ({ todo, hanndleDelete, handleUpdate, TodoComplate }) => {
   );
 };
 
-export default Todo;
+export default Task;
