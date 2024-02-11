@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import shortid from "shortid";
 
-// import CreateTodo from "./components/createTodo/CreateTodo";
+import CreateTodo from "./components/createTodo/CreateTodo";
 // import ShowTodos from "./components/showTodos/ShowTodos";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,14 +49,14 @@ const App = () => {
   };
 
   return (
-    <div>
-      {/* <CreateTodo
+    <div id="mainRoot">
+      <CreateTodo
         value={value}
         setValue={setValue}
         setCount={setCount}
         count={count}
         getTodo={getTodo}
-      /> */}
+      />
       <div className="flex justify-center">
         <select
           onChange={handleChnage}

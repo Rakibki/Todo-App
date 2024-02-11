@@ -1,0 +1,11 @@
+#todo {
+  background-color: #a3b1b2;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 7px 20px;
+  border-radius: 5px;
+  border: 1px solid skyblue;
+}
+
+#todo:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
