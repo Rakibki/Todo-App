@@ -11,6 +11,8 @@ const ShowTask = ({
 }) => {
   const [filterTask, setFilterTask] = useState([]);
   const [priorityFilter, setPriorityFilter] = useState("");
+  const totalCompleteTask = task?.filter((item) => item?.isComplete == true);
+  const totalIsCompleteTask = task?.filter((item) => item?.isComplete == false);
 
   useEffect(() => {
     if (priorityFilter == "low") {
@@ -44,9 +46,15 @@ const ShowTask = ({
   return (
     <div className="lg:w-[80%] md:w-[90%] w-[92%] bg-[#a1b2b2] lg:h-[400px] md:h-[350px] h-[300px] mx-auto rounded-[20px] overflow-y-scroll">
       <div className="flex justify-between">
-        <div>
+        <div className="flex">
           <p className="text-[#134e4a] py-3 px-7">
-            {filterTask?.length} Todo Here
+            Tatal Task: {filterTask?.length}
+          </p>
+          <p className="text-[#134e4a] py-3 px-7">
+            Completed Task: {totalCompleteTask?.length}
+          </p>
+          <p className="text-[#134e4a] py-3 px-7">
+            inComplete: {totalIsCompleteTask?.length}
           </p>
         </div>
         <div className="flex  gap-2 mx-2 mt-2">
